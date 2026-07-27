@@ -25,7 +25,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { ModeToggle } from "./ModeToggle/ModeToggle";
+import { ModeToggle } from "../ModeToggle/ModeToggle";
+import Link from "next/link";
+import MainLogo from "../shared/MainLogo";
 
 interface MenuItem {
   title: string;
@@ -66,8 +68,7 @@ const Navbar1 = ({
   },
   menu = [
     { title: "Home", url: "#" },
-    
-   
+
     {
       title: "Pricing",
       url: "#",
@@ -84,22 +85,15 @@ const Navbar1 = ({
   className,
 }: Navbar1Props) => {
   return (
-    <section className={cn("py-4 border-2 border-red-500", className)}>
-      <div className="max-w-[60%] mx-auto border-4 border-green-500">
+    <section className={cn("py-4", className)}>
+      <div className="max-w-[60%] mx-auto">
         {/* Desktop Menu */}
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
-              <img
-                src={logo.src}
-                className="max-h-8 dark:invert"
-                alt={logo.alt}
-              />
-              <span className="text-lg font-semibold tracking-tighter">
-                {logo.title}
-              </span>
-            </a>
+            <Link href={"/"}>
+                <MainLogo/>
+            </Link>
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
@@ -109,7 +103,7 @@ const Navbar1 = ({
             </div>
           </div>
           <div className="flex gap-2">
-            <ModeToggle/>
+            <ModeToggle />
             <Button asChild variant="outline" size="sm">
               <a href={auth.login.url}>{auth.login.title}</a>
             </Button>
@@ -123,13 +117,9 @@ const Navbar1 = ({
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
-              <img
-                src={logo.src}
-                className="max-h-8 dark:invert"
-                alt={logo.alt}
-              />
-            </a>
+             <Link href={"/"}>
+                <MainLogo/>
+            </Link>
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
